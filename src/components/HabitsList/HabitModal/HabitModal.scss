@@ -1,0 +1,75 @@
+@import '../../../assets/style/variables.scss';
+
+.habit-creating-modal-wrapper{
+    position: absolute;
+    height: 19rem;
+    width: 100%;
+    top: 20%;
+    background-color: #E8E8E8;
+    border: 2px solid black;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.habit-creating-modal-header{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+}
+
+.habit-creating-modal-headtext{
+    font-weight: 600;
+}
+.habit-creating-modal-buttons {
+    @include button-reset;
+  }
+  
+  .habit-creating-modal-buttons:active {
+    transform: none;
+  }
+
+.habit-creating-modal-content-wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
+}
+.habit-creating-modal-input-group{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    label{
+        width: 6rem;
+    }
+    input,select,span{
+        width: 100%;
+        text-align: right;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+    }
+    input::selection {
+        background: transparent;
+      }
+}
+
+.colored-div{
+    height: 1.3rem;
+    width: 100%;
+    float: right;
+}

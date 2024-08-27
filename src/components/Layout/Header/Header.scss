@@ -1,0 +1,30 @@
+.header-wrapper{
+    width: 100%;
+    height: 8vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;
+  }
+  .user-wrapper{
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+  .user-image{
+    height: 2rem;
+    width: 2rem;
+  }
+
+.current-page-header-text{
+  font-size: 1.5rem
+}

@@ -1,0 +1,33 @@
+.app-layout{
+    width: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid black;
+    background-color: #E8E8E8;
+    font-family: Roboto;
+    border-radius: 1rem;
+  }
+
+  .main-wrapper{
+    width: 92%;
+    height: 32rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .app-layout.modal-open *:not(.habit-creating-modal-wrapper) {
+    pointer-events: none;
+  }
