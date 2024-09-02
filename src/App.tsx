@@ -1,11 +1,17 @@
-import { RouterProvider } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 
-import router from './routes/routes'
-import { Provider } from 'react-redux'
-import { store } from './store'
+import { useAppSelector } from './hooks/hooks'
+import { selectIsAuthenticated } from './store/slices/auth.slice'
+import { getValidRoutes } from './routes/routes.helper'
+
 
 function App() {
-  return <Provider store={store}><RouterProvider router={router}/></Provider>
+  return <AppRoutes/>
+}
+
+const AppRoutes: React.FC = () => {
+  const isAuth = useAppSelector(selectIsAuthenticated);
+  return useRoutes(getValidRoutes(isAuth));
 }
 
 export default App

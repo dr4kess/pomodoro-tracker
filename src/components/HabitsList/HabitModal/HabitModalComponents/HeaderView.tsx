@@ -2,7 +2,7 @@ import { useActionCreators, useAppSelector } from "../../../../hooks/hooks"
 import { habitsActions, selectIsCreatingHabit, selectIsEditingHabit, selectIsViewingHabit, selectSelectedHabit } from "../../../../store/slices/habits.slice"
 import { Habit } from "../../../../store/types/habits.types"
 
-const HabitModalHeader = () => {
+const HeaderView = () => {
 
   const actions = useActionCreators(habitsActions)
   const isCreatingHabit = useAppSelector(selectIsCreatingHabit)
@@ -20,28 +20,28 @@ const HabitModalHeader = () => {
     }
 
     return(
-        <div className="habit-creating-modal-header">
+        <div className="habit-modal-header">
             {isCreatingHabit && 
             <>
-                <button className="habit-creating-modal-buttons" onClick={handleCancel}>Cancel</button>
-                <span className="habit-creating-modal-headtext">New Habit</span>
-                <button type="submit" className="habit-creating-modal-buttons">Add</button>
+                <button className="habit-modal-buttons" onClick={handleCancel}>Cancel</button>
+                <span className="habit-modal-headtext">New Habit</span>
+                <button type="submit" className="habit-modal-buttons">Add</button>
             </>}
             {isEditingHabit && 
             <>
-                <button className="habit-creating-modal-buttons" onClick={handleCancel}>Cancel</button>
-                <span className="habit-creating-modal-headtext">{selectedHabit?.name}</span>
-                <button type="submit" className="habit-creating-modal-buttons">Save</button>
+                <button className="habit-modal-buttons" onClick={handleCancel}>Cancel</button>
+                <span className="habit-modal-headtext">{selectedHabit?.title}</span>
+                <button type="submit" className="habit-modal-buttons">Save</button>
             </>}
             {isViewingHabit && selectedHabit && 
             <>
-                <button className="habit-creating-modal-buttons" onClick={handleCancel}>Close</button>
-                <span className="habit-creating-modal-headtext">{selectedHabit?.name}</span>
-                <button type="submit" className="habit-creating-modal-buttons" onClick={() => handleEditing(selectedHabit)}>Edit</button>
+                <button className="habit-modal-buttons" onClick={handleCancel}>Close</button>
+                <span className="habit-modal-headtext">{selectedHabit?.title}</span>
+                <button type="submit" className="habit-modal-buttons" onClick={() => handleEditing(selectedHabit)}>Edit</button>
             </>}
             
         </div>
     )
 }
 
-export default HabitModalHeader;
+export default HeaderView;

@@ -10,7 +10,7 @@ const ColorSelectView: React.FC<ColorSelectViewProps> =  ({habitColor, setHabitC
     const selectedHabit = useAppSelector(selectSelectedHabit)
 
     return(
-        <div className="habit-creating-modal-input-group">
+        <div className="habit-modal-input-group">
             <label htmlFor="habit-color">Color</label>
             {isCreatingHabit || isEditingHabit ? 
                 <select

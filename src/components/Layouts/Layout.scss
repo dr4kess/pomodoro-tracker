@@ -10,7 +10,8 @@
     border-radius: 1rem;
   }
 
-  .main-wrapper{
+  .main-wrapper,
+  .auth-wrapper{
     width: 92%;
     height: 32rem;
     display: flex;
@@ -28,6 +29,6 @@
     z-index: 1;
   }
 
-  .app-layout.modal-open *:not(.habit-creating-modal-wrapper) {
+  .app-layout.modal-open *:not(.habit-modal-wrapper):not(.task-modal-wrapper) {
     pointer-events: none;
   }

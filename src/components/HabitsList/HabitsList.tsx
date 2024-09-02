@@ -1,14 +1,15 @@
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 
-import { useActionCreators, useAppSelector } from "../../hooks/hooks"
+import { useActionCreators, useAppDispatch, useAppSelector } from "../../hooks/hooks"
 import { habitsActions, selectHabits } from "../../store/slices/habits.slice"
 
 import { useHorizontalScroll } from "../../hooks/useHorizontalScroll"
 import { Habit } from "../../store/types/habits.types"
 
-import './HabitsList.scss'
 import { trailColorForHabit } from "../../constants/habits.constatns";
+
+import './HabitsList.scss'
 
 const HabitsList = () => {
     const habits = useAppSelector(selectHabits)
@@ -25,7 +26,8 @@ const HabitsList = () => {
     };
 
     const renderedHabits = useMemo(() => {
-        return habits.map((habit) => {
+
+        return habits?.map((habit) => {
             const percentage = (habit.completedCount / habit.count) * 100;
             return(
                 <CircularProgressbarWithChildren className="habit-circle-progress"
@@ -34,23 +36,24 @@ const HabitsList = () => {
                   pathColor: trailColorForHabit(habit.color),
                   trailColor: habit.color,
                 })}
+                key={habit._id}
               >
                 <div
-                key={habit.id}
+                key={habit._id}
                 className="habit-circle"
                 style={{ backgroundColor: habit.color }}
                 onClick={() => handleHabitClick(habit)}
               >
 
                   <div>
-                    {habit.name}
+                    {habit.title}
                   </div>
               </div>
               </CircularProgressbarWithChildren>
 
             )  
-    });
-      }, [habits]);
+        });
+    }, [habits]);
 
     return(
 

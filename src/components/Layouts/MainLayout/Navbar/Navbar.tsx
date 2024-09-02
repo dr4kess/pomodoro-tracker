@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 
-import NAVBAR_CONSTANTS from '../../../constants/navbar.constants.ts'
-import { getActiveStyle } from "../../../utils/styles.ts"
+import { getActiveStyle } from "../../../../utils/styles";
+import NAVBAR_CONSTANTS from "../../../../constants/navbar.constants";
 
 import './Navbar.scss'
 

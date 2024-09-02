@@ -2,7 +2,7 @@ export const COLOR_OPTIONS = [
     { label: 'Red', value: '#e44444' },
     { label: 'Green', value: '#1cec7f' },
     { label: 'Blue', value: '#5d69e5' },
-    { label: 'Yellow', value: '#9acd32' },
+    { label: 'Yellow', value: '#FCE23C' },
     { label: 'Purple', value: '#9090d8' },
     { label: 'Pink', value: '#f48fb6' },
   ];

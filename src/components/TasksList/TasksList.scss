@@ -17,6 +17,20 @@
     flex-direction: column;
     align-items: center;
 }
+.daily-tasks-header{
+    position: relative;
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.create-task-button{
+    @include button-reset;
+    position: absolute;
+    right: 0;
+}
 
 .tasks-header-text{
     font-size: 1.7rem;

@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
 
-import { useActionCreators, useAppSelector } from "../../../hooks/hooks";
+import { useActionCreators, useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 
 import { selectHabits } from "../../../store/slices/habits.slice";
 import { tasksActions } from "../../../store/slices/tasks.slice";
-import { Task } from "../../../store/types/tasks.types";
+import { ITaskRequest } from "../../../store/types/tasks.types";
 
 import './TaskCreatingForm.scss'
+import { createTaskThunk } from "../../../store/thunks/tasks.thunk";
 
 const TaskCreatingForm = () => {
+    const dispatch = useAppDispatch()
 
     const habits = useAppSelector(selectHabits)
 
@@ -22,16 +23,13 @@ const TaskCreatingForm = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
     
-        const newTask: Task = {
-          id: uuidv4(),
+        const newTask: ITaskRequest = {
           title: taskTitle,
-          createDate: new Date(),
           dueDate: new Date(),
-          isCompleted: false,
           habitId,
         };
-    
-        taskActions.addTask(newTask)
+        
+        dispatch(createTaskThunk(newTask))
       };
 
       const handleHabitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,9 +38,9 @@ const TaskCreatingForm = () => {
         if (selectedValue === "") {
           setHabitId(undefined);
         } else {
-          const selectedHabit = habits.find(habit => habit.name === selectedValue);
+          const selectedHabit = habits.find(habit => habit.title === selectedValue);
           if (selectedHabit) {
-            setHabitId(selectedHabit.id);
+            setHabitId(selectedHabit._id);
           }
         }
       };
@@ -57,13 +55,13 @@ const TaskCreatingForm = () => {
                 <div className="habit-select-wrapper">
                     <select
                         id="habit-color"
-                        value={habits.find(habit => habit.id === habitId)?.name || ''}
+                        value={habits.find(habit => habit._id === habitId)?.title || ''}
                         onChange={(e) => handleHabitChange(e)}
                         >
                         <option value=''>Choose Your Habit</option>
                         {habits.map((habit) => (
-                            <option key={habit.name} value={habit.name} style={{backgroundColor: habit.color}}>
-                            {habit.name}
+                            <option key={habit.title} value={habit.title} style={{backgroundColor: habit.color}}>
+                            {habit.title}
                             </option>
                         ))}
                     </select>
